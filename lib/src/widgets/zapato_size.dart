@@ -13,9 +13,8 @@ class ZapatoSizePreview extends StatelessWidget {
         child: Column(
           children: [
             // Zapato con su sombra
+            Positioned(bottom: 20, right: 0, child: _ZapatoSombra()),
             _ZapatosConSombra(),
-
-            // TODO: Tallas
           ],
         ),
       ),
@@ -26,12 +25,32 @@ class ZapatoSizePreview extends StatelessWidget {
 class _ZapatosConSombra extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        Image(
-          image: AssetImage('assets/imgs/azul.png'),
-        )
-      ],
+    return Padding(
+      padding: const EdgeInsets.all(50),
+      child: Stack(
+        children: [
+          Image(
+            image: AssetImage('assets/imgs/azul.png'),
+          )
+        ],
+      ),
+    );
+  }
+}
+
+class _ZapatoSombra extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Transform.rotate(
+      angle: -0.5,
+      child: Container(
+        width: 230,
+        height: 120,
+        decoration: BoxDecoration(
+            color: Colors.transparent,
+            borderRadius: BorderRadius.circular(100),
+            boxShadow: [BoxShadow(color: Color(0xffEA14E), blurRadius: 40)]),
+      ),
     );
   }
 }
